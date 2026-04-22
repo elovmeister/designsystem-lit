@@ -4,7 +4,7 @@ import '../index.js';
 
 const meta: Meta = {
     title: 'Components/Button',
-    component: 'ds-button',
+    component: 'lm-prototype-button',
     tags: ['autodocs'],
 };
 export default meta;

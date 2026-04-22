@@ -24,7 +24,9 @@
     "prestorybook": "rm -rf ../../node_modules/.cache/storybook node_modules/.vite",
     "storybook": "storybook dev -p 6006 --no-open",
     "prebuild-storybook": "rm -rf ../../node_modules/.cache/storybook",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "dependencies": {
     "@lm-prototype/icons": "workspace:*",
@@ -36,9 +38,14 @@
     "@storybook/addon-a11y": "^8.6.18",
     "@storybook/addon-essentials": "^8.6.14",
     "@storybook/web-components-vite": "^8.6.18",
+    "@types/jsdom": "^28.0.1",
+    "axe-core": "^4.11.3",
+    "element-internals-polyfill": "^3.0.2",
+    "jsdom": "^29.0.2",
     "storybook": "^8.6.18",
     "typescript": "^5.5.4",
     "vite": "^5.4.0",
-    "vite-plugin-dts": "^4.5.4"
+    "vite-plugin-dts": "^4.5.4",
+    "vitest": "^2.1.9"
   }
 }
