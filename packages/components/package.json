@@ -3,16 +3,28 @@
   "version": "0.1.0",
   "type": "module",
   "exports": {
-    ".": { "import": "./dist/index.js", "types": "./dist/index.d.ts" },
-    "./lm-prototype-button": { "import": "./dist/lm-prototype-button.js", "types": "./dist/lm-prototype-button.d.ts" }
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./lm-prototype-button": {
+      "import": "./dist/lm-prototype-button.js",
+      "types": "./dist/lm-prototype-button.d.ts"
+    }
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "customElements": "dist/custom-elements.json",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "vite build && cem analyze --globs 'src/**/*.ts' --outdir dist",
-    "dev": "vite build --watch"
+    "dev": "vite build --watch",
+    "prestorybook": "rm -rf ../../node_modules/.cache/storybook node_modules/.vite",
+    "storybook": "storybook dev -p 6006 --no-open",
+    "prebuild-storybook": "rm -rf ../../node_modules/.cache/storybook",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "@lm-prototype/icons": "workspace:*",
@@ -21,6 +33,10 @@
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "^0.10.3",
     "@lm-prototype/tokens": "workspace:*",
+    "@storybook/addon-a11y": "^8.6.18",
+    "@storybook/addon-essentials": "^8.6.14",
+    "@storybook/web-components-vite": "^8.6.18",
+    "storybook": "^8.6.18",
     "typescript": "^5.5.4",
     "vite": "^5.4.0",
     "vite-plugin-dts": "^4.5.4"

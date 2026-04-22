@@ -4,7 +4,7 @@
   "type": "module",
   "exports": {
     ".": { "import": "./dist/index.js", "types": "./dist/index.d.ts" },
-    "./ds-icon": { "import": "./dist/lm-prototype-icon.js", "types": "./dist/lm-prototype-icon.d.ts" }
+    "./lm-prototype-icon": { "import": "./dist/lm-prototype-icon.js", "types": "./dist/lm-prototype-icon.d.ts" }
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
