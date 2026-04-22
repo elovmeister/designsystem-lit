@@ -1,0 +1,33 @@
+{
+  "color": {
+    "$type": "color",
+    "blue": {
+      "500": { "$value": "#3b82f6" },
+      "600": { "$value": "#2563eb" },
+      "700": { "$value": "#1d4ed8" }
+    },
+    "gray": {
+      "50":  { "$value": "#f9fafb" },
+      "100": { "$value": "#f3f4f6" },
+      "900": { "$value": "#111827" }
+    },
+    "red": {
+      "600": { "$value": "#dc2626" }
+    },
+    "white": { "$value": "#ffffff" }
+  },
+  "space": {
+    "$type": "dimension",
+    "1": { "$value": "4px" },
+    "2": { "$value": "8px" },
+    "4": { "$value": "16px" }
+  },
+  "radius": {
+    "$type": "dimension",
+    "md": { "$value": "6px" }
+  },
+  "duration": {
+    "$type": "duration",
+    "normal": { "$value": "200ms" }
+  }
+}

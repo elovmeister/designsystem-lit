@@ -1,0 +1,17 @@
+{
+  "name": "@lm-prototype/tokens",
+  "version": "0.1.0",
+  "type": "module",
+  "exports": {
+    "./themes/light.css": "./dist/themes/light.css",
+    "./themes/dark.css": "./dist/themes/dark.css",
+    "./tokens.json": "./dist/tokens.json"
+  },
+  "scripts": {
+    "build": "node build.mjs",
+    "dev": "node --watch-path=./src build.mjs"
+  },
+  "devDependencies": {
+    "style-dictionary": "^4.2.0"
+  }
+}

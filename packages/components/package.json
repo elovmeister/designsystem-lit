@@ -1,0 +1,28 @@
+{
+  "name": "@lm-prototype/components",
+  "version": "0.1.0",
+  "type": "module",
+  "exports": {
+    ".": { "import": "./dist/index.js", "types": "./dist/index.d.ts" },
+    "./lm-prototype-button": { "import": "./dist/lm-prototype-button.js", "types": "./dist/lm-prototype-button.d.ts" }
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "customElements": "dist/custom-elements.json",
+  "files": ["dist"],
+  "scripts": {
+    "build": "vite build && cem analyze --globs 'src/**/*.ts' --outdir dist",
+    "dev": "vite build --watch"
+  },
+  "dependencies": {
+    "@lm-prototype/icons": "workspace:*",
+    "lit": "^3.2.0"
+  },
+  "devDependencies": {
+    "@custom-elements-manifest/analyzer": "^0.10.3",
+    "@lm-prototype/tokens": "workspace:*",
+    "typescript": "^5.5.4",
+    "vite": "^5.4.0",
+    "vite-plugin-dts": "^4.5.4"
+  }
+}
