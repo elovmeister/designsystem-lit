@@ -14,7 +14,7 @@
       "on-danger": { "$value": "{color.white}" }
     },
     "action": {
-      "primary": { "$value": "{color.blue.600}" },
+      "primary": { "$value": "{color.green.500}" },
       "primary-hover": { "$value": "{color.blue.700}" },
       "primary-active": { "$value": "{color.blue.800}" }
     },

@@ -10,7 +10,7 @@ async function buildLight() {
         platforms: {
             css: {
                 transformGroup: 'css',
-                prefix: 'ds',
+                prefix: 'lm-prototype',
                 buildPath: 'dist/themes/',
                 files: [{
                     destination: 'light.css',
@@ -35,7 +35,7 @@ async function buildDark() {
         platforms: {
             css: {
                 transformGroup: 'css',
-                prefix: 'ds',
+                prefix: 'lm-prototype',
                 buildPath: 'dist/themes/',
                 files: [{
                     destination: 'dark.css',
