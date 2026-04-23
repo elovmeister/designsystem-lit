@@ -4,6 +4,20 @@ import { LmPrototypeButton } from "@lm-prototype/components-react";
 import "@lm-prototype/tokens/themes/light.css";
 import "@lm-prototype/tokens/themes/dark.css";
 
+declare global {
+    namespace JSX {
+        interface IntrinsicElements {
+            "lm-prototype-icon": React.DetailedHTMLProps<
+                React.HTMLAttributes<HTMLElement>,
+                HTMLElement
+            > & {
+                name?: string;
+                slot?: string;
+            };
+        }
+    }
+}
+
 const Section = ({
                      title,
                      children,
