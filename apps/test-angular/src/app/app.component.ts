@@ -1,9 +1,8 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-// Side-effect imports to register the custom elements
 import '@lm-prototype/components/lm-prototype-button';
-import '@lm-prototype/icons/lm-prototype-icon';
+
 
 interface ButtonDemo {
   variant: 'primary' | 'secondary' | 'tertiary' | 'danger';
@@ -28,9 +27,10 @@ interface ButtonDemo {
         <section class="demo-section">
           <h2 class="demo-title">Variants</h2>
           <div class="demo-row">
-            <lm-prototype-button *ngFor="let btn of variantButtons" [attr.variant]="btn.variant">
-              {{ btn.label }}
-            </lm-prototype-button>
+            <lm-prototype-button variant="primary">Primary</lm-prototype-button>
+            <lm-prototype-button variant="secondary">Secondary</lm-prototype-button>
+            <lm-prototype-button variant="tertiary">Tertiary</lm-prototype-button>
+            <lm-prototype-button variant="danger">Danger</lm-prototype-button>
           </div>
         </section>
 
@@ -154,13 +154,6 @@ export class AppComponent {
   darkMode = false;
   loading = false;
 
-  variantButtons: ButtonDemo[] = [
-    { variant: 'primary',   label: 'Primary' },
-    { variant: 'secondary', label: 'Secondary' },
-    { variant: 'tertiary',  label: 'Tertiary' },
-    { variant: 'danger',    label: 'Danger' },
-  ];
-
   toggleTheme(): void {
     this.darkMode = !this.darkMode;
     document.documentElement.dataset['theme'] = this.darkMode ? 'dark' : '';
@@ -174,7 +167,6 @@ export class AppComponent {
   onSubmit(event: Event): void {
     event.preventDefault();
     const data = new FormData(event.target as HTMLFormElement);
-    // Vi lägger till "as any" för att tysta TypeScript
     alert('Submitted: ' + JSON.stringify(Object.fromEntries(data as any)));
   }
 }

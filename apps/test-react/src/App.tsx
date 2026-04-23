@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { LmPrototypeButton } from "@lm-prototype/components-react";
-import "@lm-prototype/icons/lm-prototype-icon";
+
 import "@lm-prototype/tokens/themes/light.css";
 import "@lm-prototype/tokens/themes/dark.css";
 
@@ -81,9 +81,7 @@ export default function App() {
             </header>
 
             <Section title="Variants">
-                <LmPrototypeButton aria-label="hej" variant="primary">
-                    Primary
-                </LmPrototypeButton>
+                <LmPrototypeButton variant="primary">Primary</LmPrototypeButton>
                 <LmPrototypeButton variant="secondary">Secondary</LmPrototypeButton>
                 <LmPrototypeButton variant="tertiary">Tertiary</LmPrototypeButton>
                 <LmPrototypeButton variant="danger">Danger</LmPrototypeButton>
@@ -97,17 +95,14 @@ export default function App() {
 
             <Section title="With Icons">
                 <LmPrototypeButton variant="primary">
-                    {/* @ts-ignore - slot is passed via slotted children in web components */}
                     <lm-prototype-icon slot="start" name="arrow-right" />
                     Continue
                 </LmPrototypeButton>
                 <LmPrototypeButton variant="secondary">
                     Save
-                    {/* @ts-ignore */}
                     <lm-prototype-icon slot="end" name="check" />
                 </LmPrototypeButton>
                 <LmPrototypeButton variant="danger">
-                    {/* @ts-ignore */}
                     <lm-prototype-icon slot="start" name="x" />
                     Remove
                 </LmPrototypeButton>

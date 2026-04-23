@@ -15,8 +15,8 @@
     },
     "action": {
       "primary": { "$value": "{color.green.500}" },
-      "primary-hover": { "$value": "{color.blue.700}" },
-      "primary-active": { "$value": "{color.blue.800}" }
+      "primary-hover": { "$value": "{color.green.600}" },
+      "primary-active": { "$value": "{color.green.600}" }
     },
     "border": {
       "default": { "$value": "{color.gray.200}" },
