@@ -2,13 +2,34 @@
   "color": {
     "$type": "color",
     "surface": {
-      "default": { "$value": "{color.gray.900}" }
+      "default": { "$value": "{color.gray.900}" },
+      "subtle":  { "$value": "{color.gray.800}" },
+      "raised":  { "$value": "{color.gray.800}" }
     },
     "text": {
-      "primary": { "$value": "{color.gray.50}" }
+      "primary":   { "$value": "{color.gray.50}" },
+      "secondary":  { "$value": "{color.gray.400}" },
+      "disabled":  { "$value": "{color.gray.600}" },
+      "inverse":   { "$value": "{color.gray.900}" },
+      "on-danger": { "$value": "{color.white}" }
     },
     "action": {
-      "primary": { "$value": "{color.blue.500}" }
+      "primary":        { "$value": "{color.blue.500}" },
+      "primary-hover":  { "$value": "{color.blue.400}" },
+      "primary-active": { "$value": "{color.blue.300}" }
+    },
+    "border": {
+      "default": { "$value": "{color.gray.700}" },
+      "strong":  { "$value": "{color.gray.600}" },
+      "focus":   { "$value": "{color.blue.400}" }
+    },
+    "danger": {
+      "default": { "$value": "{color.red.500}" },
+      "hover":   { "$value": "{color.red.400}" },
+      "subtle":  { "$value": "{color.red.600}" }
+    },
+    "success": {
+      "default": { "$value": "{color.green.500}" }
     }
   }
 }

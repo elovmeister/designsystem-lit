@@ -1,5 +1,5 @@
 import { LmPrototypeButton } from '@lm-prototype/components-react';
-import '@lm-prototype/icons/ds-icon';
+import '@lm-prototype/icons/lm-prototype-icon';
 import '@lm-prototype/tokens/themes/light.css';
 
 export default function App() {

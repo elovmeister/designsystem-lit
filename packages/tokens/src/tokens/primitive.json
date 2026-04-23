@@ -2,32 +2,215 @@
   "color": {
     "$type": "color",
     "blue": {
-      "500": { "$value": "#3b82f6" },
-      "600": { "$value": "#2563eb" },
-      "700": { "$value": "#1d4ed8" }
+      "50": {
+        "$value": "#eff6ff"
+      },
+      "100": {
+        "$value": "#dbeafe"
+      },
+      "200": {
+        "$value": "#bfdbfe"
+      },
+      "300": {
+        "$value": "#93c5fd"
+      },
+      "400": {
+        "$value": "#60a5fa"
+      },
+      "500": {
+        "$value": "#3b82f6"
+      },
+      "600": {
+        "$value": "#2563eb"
+      },
+      "700": {
+        "$value": "#1d4ed8"
+      },
+      "800": {
+        "$value": "#1e40af"
+      },
+      "900": {
+        "$value": "#1e3a8a"
+      }
     },
     "gray": {
-      "50":  { "$value": "#f9fafb" },
-      "100": { "$value": "#f3f4f6" },
-      "900": { "$value": "#111827" }
+      "50": {
+        "$value": "#f9fafb"
+      },
+      "100": {
+        "$value": "#f3f4f6"
+      },
+      "200": {
+        "$value": "#e5e7eb"
+      },
+      "300": {
+        "$value": "#d1d5db"
+      },
+      "400": {
+        "$value": "#9ca3af"
+      },
+      "500": {
+        "$value": "#6b7280"
+      },
+      "600": {
+        "$value": "#4b5563"
+      },
+      "700": {
+        "$value": "#374151"
+      },
+      "800": {
+        "$value": "#1f2937"
+      },
+      "900": {
+        "$value": "#111827"
+      },
+      "950": {
+        "$value": "#030712"
+      }
     },
     "red": {
-      "600": { "$value": "#dc2626" }
+      "400": {
+        "$value": "#f87171"
+      },
+      "500": {
+        "$value": "#ef4444"
+      },
+      "600": {
+        "$value": "#dc2626"
+      },
+      "700": {
+        "$value": "#b91c1c"
+      },
+      "800": {
+        "$value": "#991b1b"
+      },
+      "900": {
+        "$value": "#7f1d1d"
+      }
     },
-    "white": { "$value": "#ffffff" }
+    "green": {
+      "500": {
+        "$value": "#22c55e"
+      },
+      "600": {
+        "$value": "#16a34a"
+      }
+    },
+    "white": {
+      "$value": "#ffffff"
+    },
+    "black": {
+      "$value": "#000000"
+    }
   },
   "space": {
     "$type": "dimension",
-    "1": { "$value": "4px" },
-    "2": { "$value": "8px" },
-    "4": { "$value": "16px" }
+    "1": {
+      "$value": "4px"
+    },
+    "2": {
+      "$value": "8px"
+    },
+    "3": {
+      "$value": "12px"
+    },
+    "4": {
+      "$value": "16px"
+    },
+    "6": {
+      "$value": "24px"
+    },
+    "8": {
+      "$value": "32px"
+    },
+    "12": {
+      "$value": "48px"
+    },
+    "16": {
+      "$value": "64px"
+    }
   },
   "radius": {
     "$type": "dimension",
-    "md": { "$value": "6px" }
+    "sm": {
+      "$value": "4px"
+    },
+    "md": {
+      "$value": "6px"
+    },
+    "lg": {
+      "$value": "8px"
+    },
+    "full": {
+      "$value": "9999px"
+    }
+  },
+  "font": {
+    "size": {
+      "$type": "dimension",
+      "xs": {
+        "$value": "12px"
+      },
+      "sm": {
+        "$value": "14px"
+      },
+      "md": {
+        "$value": "16px"
+      },
+      "lg": {
+        "$value": "18px"
+      },
+      "xl": {
+        "$value": "20px"
+      }
+    },
+    "weight": {
+      "$type": "fontWeight",
+      "regular": {
+        "$value": "400"
+      },
+      "medium": {
+        "$value": "500"
+      },
+      "semibold": {
+        "$value": "600"
+      },
+      "bold": {
+        "$value": "700"
+      }
+    },
+    "family": {
+      "$type": "fontFamily",
+      "sans": {
+        "$value": "Inter, system-ui, -apple-system, sans-serif"
+      },
+      "mono": {
+        "$value": "'JetBrains Mono', 'Fira Code', monospace"
+      }
+    }
   },
   "duration": {
     "$type": "duration",
-    "normal": { "$value": "200ms" }
+    "fast": {
+      "$value": "100ms"
+    },
+    "normal": {
+      "$value": "200ms"
+    },
+    "slow": {
+      "$value": "400ms"
+    }
+  },
+  "shadow": {
+    "$type": "shadow",
+    "sm": {
+      "$value": "0 1px 2px 0 rgb(0 0 0 / 0.05)"
+    },
+    "md": {
+      "$value": "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)"
+    },
+    "lg": {
+      "$value": "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)"
+    }
   }
 }
