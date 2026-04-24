@@ -1,5 +1,12 @@
 # @lm-prototype/test-angular
 
+## 0.0.3
+
+### Patch Changes
+
+- Updated dependencies
+  - @lm-prototype/components@1.0.0
+
 ## 0.0.2
 
 ### Patch Changes
