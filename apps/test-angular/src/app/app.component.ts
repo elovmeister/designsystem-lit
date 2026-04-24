@@ -2,7 +2,7 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import '@lm-prototype/components/lm-prototype-button';
-
+import '@lm-prototype/components/lm-prototype-dropdown';
 
 interface ButtonDemo {
   variant: 'primary' | 'secondary' | 'tertiary' | 'danger';
@@ -83,6 +83,28 @@ interface ButtonDemo {
             <lm-prototype-button type="submit">Submit</lm-prototype-button>
             <lm-prototype-button type="reset" variant="tertiary">Reset</lm-prototype-button>
           </form>
+        </section>
+
+        <section class="demo-section">
+          <h2 class="demo-title">Dropdown</h2>
+          <div style="min-height: 250px;">
+            <lm-prototype-dropdown variant="primary" size="lg">
+              <span slot="label">Options</span>
+
+              <div style="padding: 8px; display: flex; flex-direction: column; gap: 4px; min-width: 180px;">
+                <a href="#"
+                   style="padding: 8px 12px; border-radius: 4px; cursor: pointer; font-size: 14px; font-family: system-ui, sans-serif; color: #374151; text-decoration: none;">Account
+                  settings</a>
+                <a href="#"
+                   style="padding: 8px 12px; border-radius: 4px; cursor: pointer; font-size: 14px; font-family: system-ui, sans-serif; color: #374151; text-decoration: none;">Support</a>
+                <hr style="border: 0; border-top: 1px solid #e5e7eb; margin: 4px 0;">
+                <a href="#"
+                   style="padding: 8px 12px; border-radius: 4px; cursor: pointer; font-size: 14px; font-family: system-ui, sans-serif; color: #374151; text-decoration: none; color: #dc2626;">Sign
+                  out</a>
+              </div>
+
+            </lm-prototype-dropdown>
+          </div>
         </section>
       </main>
     </div>

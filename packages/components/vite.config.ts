@@ -14,6 +14,7 @@ export default defineConfig({
             entry: {
                 index: resolve(__dirname, 'src/index.ts'),
                 'lm-prototype-button': resolve(__dirname, 'src/button/lm-prototype-button.ts'),
+                'lm-prototype-dropdown': resolve(__dirname, 'src/dropdown/lm-prototype-dropdown.ts')
             },
             formats: ['es'],
         },

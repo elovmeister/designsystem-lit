@@ -10,6 +10,10 @@
     "./lm-prototype-button": {
       "import": "./dist/lm-prototype-button.js",
       "types": "./dist/lm-prototype-button.d.ts"
+    },
+    "./lm-prototype-dropdown": {
+      "import": "./dist/lm-prototype-dropdown.js",
+      "types": "./dist/lm-prototype-dropdown.d.ts"
     }
   },
   "main": "./dist/index.js",

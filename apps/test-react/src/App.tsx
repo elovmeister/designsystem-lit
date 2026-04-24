@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { LmPrototypeButton } from "@lm-prototype/components-react";
+import { LmPrototypeButton, LmPrototypeDropdown } from "@lm-prototype/components-react";
 
 import "@lm-prototype/tokens/themes/light.css";
 import "@lm-prototype/tokens/themes/dark.css";
@@ -64,6 +64,16 @@ export default function App() {
     const simulateAsync = () => {
         setLoading(true);
         setTimeout(() => setLoading(false), 2000);
+    };
+
+    // Gemensam stil för länkarna i dropdown-menyn för att hålla koden ren
+    const menuItemStyle: React.CSSProperties = {
+        padding: "8px 12px",
+        borderRadius: 4,
+        cursor: "pointer",
+        fontSize: 14,
+        textDecoration: "none",
+        color: "var(--lm-prototype-color-text-primary)",
     };
 
     return (
@@ -155,6 +165,32 @@ export default function App() {
                         Reset
                     </LmPrototypeButton>
                 </form>
+            </Section>
+
+            <Section title="Dropdown">
+                <div style={{ minHeight: 250 }}>
+                    {/* Här kan du testa att lyssna på ert custom event onLmChange! */}
+                    <LmPrototypeDropdown
+                        variant="secondary"
+                        size="md"
+                        onLmChange={(e: any) => console.log("Dropdown open state:", e.detail.open)}
+                    >
+                        <span slot="label">Options</span>
+
+                        <div style={{ padding: 8, display: "flex", flexDirection: "column", gap: 4, minWidth: 180 }}>
+                            <a href="#" style={menuItemStyle}>
+                                Account settings
+                            </a>
+                            <a href="#" style={menuItemStyle}>
+                                Support
+                            </a>
+                            <hr style={{ border: 0, borderTop: "1px solid var(--lm-prototype-color-border-default)", margin: "4px 0" }} />
+                            <a href="#" style={{ ...menuItemStyle, color: "var(--lm-prototype-color-danger-default)" }}>
+                                Sign out
+                            </a>
+                        </div>
+                    </LmPrototypeDropdown>
+                </div>
             </Section>
         </div>
     );
