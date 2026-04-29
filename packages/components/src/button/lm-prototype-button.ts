@@ -61,7 +61,6 @@ export class LmPrototypeButton extends LitElement {
     }
 
     static styles = css`
-        /* ── Internal custom properties (with semantic token fallbacks) ─────── */
 
         :host {
             display: inline-block;
@@ -77,8 +76,6 @@ export class LmPrototypeButton extends LitElement {
             --_gap: var(--lm-prototype-button-gap, var(--lm-prototype-space-2));
             --_dur: var(--lm-prototype-duration-normal, 200ms);
         }
-
-        /* ── Variant overrides ─────────────────────────────────────────────── */
 
         :host([variant='secondary']) {
             --_bg: transparent;

@@ -66,7 +66,6 @@ export default function App() {
         setTimeout(() => setLoading(false), 2000);
     };
 
-    // Gemensam stil för länkarna i dropdown-menyn för att hålla koden ren
     const menuItemStyle: React.CSSProperties = {
         padding: "8px 12px",
         borderRadius: 4,
@@ -169,7 +168,6 @@ export default function App() {
 
             <Section title="Dropdown">
                 <div style={{ minHeight: 250 }}>
-                    {/* Här kan du testa att lyssna på ert custom event onLmChange! */}
                     <LmPrototypeDropdown
                         variant="secondary"
                         size="md"
