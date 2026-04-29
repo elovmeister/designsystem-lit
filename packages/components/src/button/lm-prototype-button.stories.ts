@@ -13,7 +13,6 @@ interface ButtonArgs {
     label: string;
 }
 
-// ─── Shared style helpers ──────────────────────────────────────────────────
 
 const row = 'display:flex;gap:12px;flex-wrap:wrap;align-items:center;';
 
@@ -46,7 +45,6 @@ const badge = (label: string, color = '#2563eb') => html`
   ">${label}</span>
 `;
 
-// ─── Meta ─────────────────────────────────────────────────────────────────
 
 const meta: Meta = {
     title: 'Components/Button',
@@ -117,9 +115,7 @@ lm-prototype-button {
 export default meta;
 type Story = StoryObj;
 
-// ─── Visual stories ────────────────────────────────────────────────────────
 
-/** The default primary call-to-action button. */
 export const Primary: Story = {
     render: (args: ButtonArgs) => html`
     <lm-prototype-button variant=${args.variant} size=${args.size}
@@ -129,7 +125,6 @@ export const Primary: Story = {
   `,
 };
 
-/** Secondary button for supporting actions. */
 export const Secondary: Story = {
     args: { variant: 'secondary', label: 'Secondary' },
     render: (args: ButtonArgs) => html`
@@ -140,7 +135,6 @@ export const Secondary: Story = {
   `,
 };
 
-/** Tertiary/ghost button for low-emphasis actions. */
 export const Tertiary: Story = {
     args: { variant: 'tertiary', label: 'Tertiary' },
     render: (args: ButtonArgs) => html`
@@ -151,7 +145,6 @@ export const Tertiary: Story = {
   `,
 };
 
-/** Danger button for destructive actions (delete, revoke, etc.). */
 export const Danger: Story = {
     args: { variant: 'danger', label: 'Delete' },
     render: (args: ButtonArgs) => html`
@@ -162,7 +155,6 @@ export const Danger: Story = {
   `,
 };
 
-/** All four variants side by side. */
 export const AllVariants: Story = {
     parameters: { controls: { disable: true } },
     render: () => html`
@@ -175,7 +167,6 @@ export const AllVariants: Story = {
   `,
 };
 
-/** All three sizes side by side. */
 export const AllSizes: Story = {
     parameters: { controls: { disable: true } },
     render: () => html`
@@ -187,7 +178,6 @@ export const AllSizes: Story = {
   `,
 };
 
-/** Buttons with icons in the start/end slots. */
 export const WithIcons: Story = {
     parameters: { controls: { disable: true } },
     render: () => html`
@@ -212,7 +202,6 @@ export const WithIcons: Story = {
   `,
 };
 
-/** Loading state — aria-busy is set on the inner button; spinner replaces the start-slot icon. */
 export const Loading: Story = {
     args: { loading: true, label: 'Saving…' },
     render: ({ label }: ButtonArgs) => html`
@@ -224,7 +213,6 @@ export const Loading: Story = {
   `,
 };
 
-/** Disabled state across all variants. */
 export const Disabled: Story = {
     parameters: { controls: { disable: true } },
     render: () => html`
@@ -237,7 +225,6 @@ export const Disabled: Story = {
   `,
 };
 
-// ─── Accessibility stories ─────────────────────────────────────────────────
 //
 // These stories cover the *consumer-facing* accessibility patterns for button.
 // For the architectural background — ElementInternals, shadow DOM forwarding,
@@ -259,7 +246,6 @@ export const A11yIconOnly: Story = {
         docs: {
             source: {
                 code: `
-<!-- Without aria-label an icon-only button has no accessible name (axe violation) -->
 <lm-prototype-button aria-label="Close dialog" variant="tertiary">
   <lm-prototype-icon slot="start" name="x"></lm-prototype-icon>
 </lm-prototype-button>
@@ -531,8 +517,8 @@ export const A11yInAForm: Story = {
     <label htmlFor="email">Email</label>
     <input id="email" name="email" type="email" required />
 
-    <LmPrototypeButton type="submit">Subscribe</LmPrototypeButton>     {/* requestSubmit() */}
-    <LmPrototypeButton type="reset" variant="tertiary">      {/* form.reset() */}
+    <LmPrototypeButton type="submit">Subscribe</LmPrototypeButton>    
+    <LmPrototypeButton type="reset" variant="tertiary">     
       Clear
     </LmPrototypeButton>
   </fieldset>

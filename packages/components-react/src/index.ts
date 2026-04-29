@@ -22,7 +22,6 @@ export const LmPrototypeDropdown = createComponent({
     elementClass: LmPrototypeDropdownElement,
     react: React,
     events: {
-        // Vi fångar ert custom event och typkodar det så React-utvecklaren får auto-complete
         onLmChange: 'lm-change' as EventName<CustomEvent<{ open: boolean }>>,
         onClick: 'click' as EventName<MouseEvent>,
         onFocus: 'focus' as EventName<FocusEvent>,

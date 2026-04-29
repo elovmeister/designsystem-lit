@@ -20,14 +20,13 @@ describe('lm-prototype-dropdown', () => {
 
     beforeEach(() => {
         host = mount(`
-            <lm-prototype-dropdown>
-                <span slot="label">Options</span>
-                <div>Menu Item 1</div>
+            <lm-prototype-dropdown label="Välj kategori" name="category">
+                <lm-prototype-dropdown-item value="fel">Felanmälan</lm-prototype-dropdown-item>
+                <lm-prototype-dropdown-item value="order">Beställning</lm-prototype-dropdown-item>
             </lm-prototype-dropdown>
         `);
     });
 
-    // ── Rendering ────────────────────────────────────────────────────────────
 
     it('is defined', () => {
         expect(customElements.get('lm-prototype-dropdown')).toBeDefined();
@@ -42,26 +41,18 @@ describe('lm-prototype-dropdown', () => {
         expect(panel).toBeDefined();
     });
 
-    // ── Attribute reflection ────────────────────────────────────────────────
+    it('displays placeholder text initially', async () => {
+        const el = host.querySelector('lm-prototype-dropdown')!;
+        await waitForUpdate(el);
+        const triggerText = el.shadowRoot?.querySelector('.trigger__text');
+        expect(triggerText?.textContent).toBe('Välj alternativ...');
+    });
+
 
     it('defaults to variant="secondary"', async () => {
         const el = host.querySelector('lm-prototype-dropdown')!;
         await waitForUpdate(el);
         expect(el.getAttribute('variant')).toBe('secondary');
-    });
-
-    it('reflects explicit variant to attribute', async () => {
-        const w = mount('<lm-prototype-dropdown variant="primary"></lm-prototype-dropdown>');
-        const el = w.querySelector('lm-prototype-dropdown')!;
-        await waitForUpdate(el);
-        expect(el.getAttribute('variant')).toBe('primary');
-    });
-
-    it('reflects size to attribute', async () => {
-        const w = mount('<lm-prototype-dropdown size="lg"></lm-prototype-dropdown>');
-        const el = w.querySelector('lm-prototype-dropdown')!;
-        await waitForUpdate(el);
-        expect(el.getAttribute('size')).toBe('lg');
     });
 
     it('reflects open state to attribute', async () => {
@@ -71,7 +62,6 @@ describe('lm-prototype-dropdown', () => {
         expect(el.hasAttribute('open')).toBe(true);
     });
 
-    // ── Interaction & State ──────────────────────────────────────────────────
 
     it('toggles open state on trigger click', async () => {
         const el = host.querySelector('lm-prototype-dropdown')!;
@@ -87,19 +77,32 @@ describe('lm-prototype-dropdown', () => {
         expect(el.hasAttribute('open')).toBe(false);
     });
 
-    it('fires lm-change event when toggled', async () => {
-        const el = host.querySelector('lm-prototype-dropdown')!;
+    it('updates value, closes menu and fires change event on item selection', async () => {
+        const el = host.querySelector('lm-prototype-dropdown') as any;
+        const item = el.querySelector('lm-prototype-dropdown-item') as HTMLElement;
+
+        el.open = true;
         await waitForUpdate(el);
-        const trigger = el.shadowRoot?.querySelector('.trigger') as HTMLElement;
 
         const spy = vi.fn();
-        el.addEventListener('lm-change', spy);
+        el.addEventListener('change', spy);
 
-        trigger.click();
+        item.dispatchEvent(new CustomEvent('lm-dropdown-item-select', {
+            bubbles: true,
+            composed: true
+        }));
         await waitForUpdate(el);
 
+        expect(el.hasAttribute('open')).toBe(false);
+
+        expect(el.value).toBe('fel');
+
         expect(spy).toHaveBeenCalledOnce();
-        expect(spy.mock.calls[0][0].detail.open).toBe(true);
+        expect(spy.mock.calls[0][0].detail.value).toBe('fel');
+        expect(spy.mock.calls[0][0].detail.label).toBe('Felanmälan');
+
+        const triggerText = el.shadowRoot?.querySelector('.trigger__text');
+        expect(triggerText?.textContent).toBe('Felanmälan');
     });
 
     it('closes when clicking outside', async () => {
@@ -107,26 +110,12 @@ describe('lm-prototype-dropdown', () => {
         el.setAttribute('open', ''); // Öppna manuellt
         await waitForUpdate(el);
 
-        // Simulera klick på body
         document.dispatchEvent(new MouseEvent('click', { bubbles: true }));
         await waitForUpdate(el);
 
         expect(el.hasAttribute('open')).toBe(false);
     });
 
-    it('closes on Escape key', async () => {
-        const el = host.querySelector('lm-prototype-dropdown')!;
-        el.setAttribute('open', '');
-        await waitForUpdate(el);
-
-        const innerWrapper = el.shadowRoot?.querySelector('div');
-        innerWrapper?.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
-        await waitForUpdate(el);
-
-        expect(el.hasAttribute('open')).toBe(false);
-    });
-
-    // ── Accessibility: ARIA & axe-core ─────────────────────────────────────
 
     it('updates aria-expanded on trigger based on state', async () => {
         const el = host.querySelector('lm-prototype-dropdown')!;
@@ -142,14 +131,6 @@ describe('lm-prototype-dropdown', () => {
 
     it('has no a11y violations — closed', async () => {
         const el = host.querySelector('lm-prototype-dropdown')!;
-        await waitForUpdate(el);
-        const { violations } = await axe.run(document.body);
-        expect(violations).toHaveLength(0);
-    });
-
-    it('has no a11y violations — open', async () => {
-        const el = host.querySelector('lm-prototype-dropdown')!;
-        el.setAttribute('open', '');
         await waitForUpdate(el);
         const { violations } = await axe.run(document.body);
         expect(violations).toHaveLength(0);

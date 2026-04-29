@@ -95,7 +95,6 @@ export class LmPrototypeButton extends LitElement {
             --_border-color: transparent;
         }
 
-        /* ── Size overrides ────────────────────────────────────────────────── */
 
         :host([size='sm']) {
             --_px: var(--lm-prototype-space-3);
@@ -109,7 +108,6 @@ export class LmPrototypeButton extends LitElement {
             --_fs: var(--lm-prototype-font-size-lg);
         }
 
-        /* ── Disabled state ────────────────────────────────────────────────── */
 
         :host([disabled]) {
             opacity: 0.5;
@@ -117,7 +115,6 @@ export class LmPrototypeButton extends LitElement {
             pointer-events: none;
         }
 
-        /* ── Base button ───────────────────────────────────────────────────── */
 
         .btn {
             display: inline-flex;
@@ -156,7 +153,6 @@ export class LmPrototypeButton extends LitElement {
             pointer-events: none;
         }
 
-        /* ── Hover/active states (per variant) ─────────────────────────────── */
 
         :host([variant='primary']) .btn:not(:disabled):hover {
             background: var(--lm-prototype-color-action-primary-hover);
@@ -175,7 +171,6 @@ export class LmPrototypeButton extends LitElement {
             background: var(--lm-prototype-color-danger-hover);
         }
 
-        /* ── Icon slots ────────────────────────────────────────────────────── */
 
         .btn__icon {
             display: inline-flex;
@@ -184,7 +179,6 @@ export class LmPrototypeButton extends LitElement {
             font-size: 1em;
         }
 
-        /* ── Loading spinner ───────────────────────────────────────────────── */
 
         .btn__icon--spinner {
             animation: lm-prototype-spin 0.8s linear infinite;
@@ -199,7 +193,6 @@ export class LmPrototypeButton extends LitElement {
             }
         }
 
-        /* ── Loading state ─────────────────────────────────────────────────── */
 
         :host([loading]) .btn {
             cursor: wait;
@@ -210,25 +203,18 @@ export class LmPrototypeButton extends LitElement {
         }
     `;
 
-    /** Visual variant. Reflected as an attribute for CSS targeting. */
     @property({reflect: true}) variant: ButtonVariant = 'primary';
 
-    /** Size variant. Reflected as an attribute for CSS targeting. */
     @property({reflect: true}) size: ButtonSize = 'md';
 
-    /** Maps to the native button `type` attribute. */
     @property() type: ButtonType = 'button';
 
-    /** Passed to ElementInternals for form submission. */
     @property() name?: string;
 
-    /** Passed to ElementInternals for form submission. */
     @property() value?: string;
 
-    /** Disables the button and prevents interaction. */
     @property({type: Boolean, reflect: true}) disabled = false;
 
-    /** Shows a spinner and prevents interaction while an async action runs. */
     @property({type: Boolean, reflect: true}) loading = false;
 
     private readonly _internals: ElementInternals;
@@ -252,12 +238,10 @@ export class LmPrototypeButton extends LitElement {
         if (name.startsWith('aria-')) this.requestUpdate();
     }
 
-    /** Called by the browser when the form's disabled state changes. */
     formDisabledCallback(isDisabled: boolean): void {
         this.disabled = isDisabled;
     }
 
-    /** Called on form reset; clear any internal state here if needed. */
     formResetCallback(): void {
         this._internals.setFormValue(null);
     }
@@ -271,9 +255,7 @@ export class LmPrototypeButton extends LitElement {
     render() {
         const isBlocked = this.disabled || this.loading;
 
-// Read host aria-* attributes and forward them into the shadow <button>.
-// Screen readers focus on the inner <button>, not the host, so this is
-// the only way they can see these attributes.
+
         const fwdAriaLabel = this.getAttribute('aria-label');
         const fwdAriaLabelledby = this.getAttribute('aria-labelledby');
         const fwdAriaDescribedby = this.getAttribute('aria-describedby');

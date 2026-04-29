@@ -22,7 +22,6 @@ describe('lm-prototype-button', () => {
         host = mount('<lm-prototype-button>Click me</lm-prototype-button>');
     });
 
-    // ── Rendering ────────────────────────────────────────────────────────────
 
     it('is defined', () => {
         expect(customElements.get('lm-prototype-button')).toBeDefined();
@@ -35,7 +34,6 @@ describe('lm-prototype-button', () => {
         expect(inner).toBeDefined();
     });
 
-    // ── Attribute reflection ────────────────────────────────────────────────
 
     it('defaults to variant="primary"', async () => {
         const el = host.querySelector('lm-prototype-button')!;
@@ -71,7 +69,6 @@ describe('lm-prototype-button', () => {
         expect(el.hasAttribute('loading')).toBe(true);
     });
 
-    // ── Inner button state ──────────────────────────────────────────────────
 
     it('marks inner button disabled when host is disabled', async () => {
         const w = mount('<lm-prototype-button disabled>Off</lm-prototype-button>');
@@ -96,7 +93,6 @@ describe('lm-prototype-button', () => {
         expect(inner?.getAttribute('aria-busy')).toBeNull();
     });
 
-    // ── Accessibility: axe-core ────────────────────────────────────────────
 
     it('has no a11y violations — primary (default)', async () => {
         const el = host.querySelector('lm-prototype-button')!;
