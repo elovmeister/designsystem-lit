@@ -31,6 +31,7 @@ interface ButtonDemo {
             <lm-prototype-button variant="secondary">Secondary</lm-prototype-button>
             <lm-prototype-button variant="tertiary">Tertiary</lm-prototype-button>
             <lm-prototype-button variant="danger">Danger</lm-prototype-button>
+            <lm-prototype-button variant=""
           </div>
         </section>
 
