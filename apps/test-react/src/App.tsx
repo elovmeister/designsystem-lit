@@ -1,298 +1,136 @@
-/**import { useState } from "react";
-import { LmPrototypeButton, LmPrototypeDropdown } from "@lm-prototype/components-react";
-
-import "@lm-prototype/tokens/themes/light.css";
-import "@lm-prototype/tokens/themes/dark.css";
-
-declare global {
-    namespace JSX {
-        interface IntrinsicElements {
-            "lm-prototype-icon": React.DetailedHTMLProps<
-                React.HTMLAttributes<HTMLElement>,
-                HTMLElement
-            > & {
-                name?: string;
-                slot?: string;
-            };
-        }
-    }
-}
-
-const Section = ({
-                     title,
-                     children,
-                 }: {
-    title: string;
-    children: React.ReactNode;
-}) => (
-    <section style={{ marginBottom: 32 }}>
-        <h2
-            style={{
-                fontSize: 14,
-                fontWeight: 600,
-                textTransform: "uppercase",
-                letterSpacing: "0.05em",
-                marginBottom: 12,
-                color: "var(--lm-prototype-color-text-secondary)",
-            }}
-        >
-            {title}
-        </h2>
-        <div
-            style={{
-                display: "flex",
-                gap: 12,
-                flexWrap: "wrap",
-                alignItems: "center",
-            }}
-        >
-            {children}
-        </div>
-    </section>
-);
-
-export default function App() {
-    const [darkMode, setDarkMode] = useState(false);
-    const [loading, setLoading] = useState(false);
-
-    const toggleTheme = () => {
-        const next = !darkMode;
-        setDarkMode(next);
-        document.documentElement.dataset["theme"] = next ? "dark" : "";
-    };
-
-    const simulateAsync = () => {
-        setLoading(true);
-        setTimeout(() => setLoading(false), 2000);
-    };
-
-    const menuItemStyle: React.CSSProperties = {
-        padding: "8px 12px",
-        borderRadius: 4,
-        cursor: "pointer",
-        fontSize: 14,
-        textDecoration: "none",
-        color: "var(--lm-prototype-color-text-primary)",
-    };
-
-    return (
-        <div
-            style={{
-                padding: 40,
-                minHeight: "100vh",
-                background: "var(--lm-prototype-color-surface-default)",
-                color: "var(--lm-prototype-color-text-primary)",
-                fontFamily: "var(--lm-prototype-font-family-sans, system-ui)",
-            }}
-        >
-            <header
-                style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                    marginBottom: 40,
-                    borderBottom: "1px solid var(--lm-prototype-color-border-default)",
-                    paddingBottom: 20,
-                }}
-            >
-                <h1 style={{ fontSize: 24, fontWeight: 700, margin: 0 }}>
-                    Design System — React Test App
-                </h1>
-                <LmPrototypeButton variant="tertiary" onClick={toggleTheme}>
-                    {darkMode ? "☀️ Light" : "🌙 Dark"}
-                </LmPrototypeButton>
-            </header>
-
-            <Section title="Variants">
-                <LmPrototypeButton variant="primary">Primary</LmPrototypeButton>
-                <LmPrototypeButton variant="secondary">Secondary</LmPrototypeButton>
-                <LmPrototypeButton variant="tertiary">Tertiary</LmPrototypeButton>
-                <LmPrototypeButton variant="danger">Danger</LmPrototypeButton>
-            </Section>
-
-            <Section title="Sizes">
-                <LmPrototypeButton size="sm">Small</LmPrototypeButton>
-                <LmPrototypeButton size="md">Medium</LmPrototypeButton>
-                <LmPrototypeButton size="lg">Large</LmPrototypeButton>
-            </Section>
-
-            <Section title="With Icons">
-                <LmPrototypeButton variant="primary">
-                    <lm-prototype-icon slot="start" name="arrow-right" />
-                    Continue
-                </LmPrototypeButton>
-                <LmPrototypeButton variant="secondary">
-                    Save
-                    <lm-prototype-icon slot="end" name="check" />
-                </LmPrototypeButton>
-                <LmPrototypeButton variant="danger">
-                    <lm-prototype-icon slot="start" name="x" />
-                    Remove
-                </LmPrototypeButton>
-            </Section>
-
-            <Section title="States">
-                <LmPrototypeButton loading={loading} onClick={simulateAsync}>
-                    {loading ? "Saving…" : "Click to load (2s)"}
-                </LmPrototypeButton>
-                <LmPrototypeButton disabled>Disabled</LmPrototypeButton>
-                <LmPrototypeButton loading>Always loading</LmPrototypeButton>
-            </Section>
-
-            <Section title="Form Participation">
-                <form
-                    onSubmit={(e) => {
-                        e.preventDefault();
-                        alert("Submitted!");
-                    }}
-                    style={{ display: "flex", gap: 8, alignItems: "center" }}
-                >
-                    <input
-                        name="q"
-                        placeholder="Type something…"
-                        style={{
-                            padding: "8px 12px",
-                            border: "1px solid var(--lm-prototype-color-border-default)",
-                            borderRadius: "var(--lm-prototype-radius-md)",
-                            background: "var(--lm-prototype-color-surface-raised)",
-                            color: "var(--lm-prototype-color-text-primary)",
-                            fontSize: "var(--lm-prototype-font-size-md)",
-                        }}
-                    />
-                    <LmPrototypeButton type="submit">Submit</LmPrototypeButton>
-                    <LmPrototypeButton type="reset" variant="tertiary">
-                        Reset
-                    </LmPrototypeButton>
-                </form>
-            </Section>
-
-            <Section title="Dropdown">
-                <div style={{ minHeight: 250 }}>
-                    <LmPrototypeDropdown
-                        variant="secondary"
-                        size="md"
-                        onLmChange={(e: any) => console.log("Dropdown open state:", e.detail.open)}
-                    >
-                        <span slot="label">Options</span>
-
-                        <div style={{ padding: 8, display: "flex", flexDirection: "column", gap: 4, minWidth: 180 }}>
-                            <a href="#" style={menuItemStyle}>
-                                Account settings
-                            </a>
-                            <a href="#" style={menuItemStyle}>
-                                Support
-                            </a>
-                            <hr style={{ border: 0, borderTop: "1px solid var(--lm-prototype-color-border-default)", margin: "4px 0" }} />
-                            <a href="#" style={{ ...menuItemStyle, color: "var(--lm-prototype-color-danger-default)" }}>
-                                Sign out
-                            </a>
-                        </div>
-                    </LmPrototypeDropdown>
-                </div>
-            </Section>
-        </div>
-    );
-}*/
-import { useState } from "react";
+import { useState } from 'react';
 import {
     LmPrototypeButton,
+    LmPrototypeInput,
     LmPrototypeDropdown,
     LmPrototypeDropdownItem,
-    LmPrototypeInput,
     LmPrototypeCheckbox
-} from "@lm-prototype/components-react";
+} from '@lm-prototype/components-react';
+import '@lm-prototype/tokens/themes/light.css';
+import '@lm-prototype/icons';
 
-import "@lm-prototype/tokens/themes/light.css";
-import "@lm-prototype/tokens/themes/dark.css";
+export default function EventRegistration() {
+    const [formData, setFormData] = useState({
+        firstName: '',
+        lastName: '',
+        email: '',
+        ticketType: '',
+        foodPreference: 'Ingen',
+        newsletter: false,
+        terms: false
+    });
 
-const Section = ({ title, children }: { title: string; children: React.ReactNode }) => (
-    <section style={{ marginBottom: 32, maxWidth: 500 }}>
-        <h2 style={{ fontSize: 14, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 12, color: "var(--lm-prototype-color-text-secondary)" }}>
-            {title}
-        </h2>
-        <div>{children}</div>
-    </section>
-);
+    const [isLoading, setIsLoading] = useState(false);
 
-export default function App() {
-    const [darkMode, setDarkMode] = useState(false);
-    const [showAdvanced, setShowAdvanced] = useState(false);
+    const isFormValid =
+        formData.firstName &&
+        formData.lastName &&
+        formData.email.includes('@') &&
+        formData.ticketType &&
+        formData.terms;
 
-    const toggleTheme = () => {
-        const next = !darkMode;
-        setDarkMode(next);
-        document.documentElement.dataset["theme"] = next ? "dark" : "";
-    };
-
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        const data = new FormData(e.currentTarget);
-        alert('Sparad data från Web Components: \n\n' + JSON.stringify(Object.fromEntries(data as any), null, 2));
+    const handleRegister = () => {
+        setIsLoading(true);
+        setTimeout(() => {
+            setIsLoading(false);
+            alert(`Tack för din anmälan, ${formData.firstName}! En bekräftelse har skickats till ${formData.email}.`);
+        }, 2000);
     };
 
     return (
-        <div style={{ padding: 40, minHeight: "100vh", background: "var(--lm-prototype-color-surface-default)", color: "var(--lm-prototype-color-text-primary)", fontFamily: "var(--lm-prototype-font-family-sans, system-ui)" }}>
-            <header style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 40, borderBottom: "1px solid var(--lm-prototype-color-border-default)", paddingBottom: 20, maxWidth: 800 }}>
-                <h1 style={{ fontSize: 24, fontWeight: 700, margin: 0 }}>Design System — React Test App</h1>
-                <LmPrototypeButton variant="tertiary" icon="chevron-down" onClick={toggleTheme}>
-                    {darkMode ? "Light Mode" : "Dark Mode"}
-                </LmPrototypeButton>
+        <div style={{ maxWidth: '600px', margin: '40px auto', padding: '20px' }}>
+            <header style={{ marginBottom: '32px' }}>
+                <h1>Anmälan: TechConf 2026</h1>
+                <p>Säkra din plats på årets största utvecklarkonferens.</p>
             </header>
 
-            <Section title="Testscenario: Konfigurera Strategi">
-                <form
-                    onSubmit={handleSubmit}
-                    style={{ display: "flex", flexDirection: "column", gap: 20, padding: 24, border: "1px solid var(--lm-prototype-color-border-default)", borderRadius: 8, background: "var(--lm-prototype-color-surface-raised)" }}
-                >
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
                     <LmPrototypeInput
-                        name="configName"
-                        label="Konfigurationsnamn"
-                        placeholder="T.ex. Nattkörning"
-                        required
+                        label="Förnamn*"
+                        value={formData.firstName}
+                        onInput={(e: any) => setFormData({...formData, firstName: e.target.value})}
                     />
+                    <LmPrototypeInput
+                        label="Efternamn*"
+                        value={formData.lastName}
+                        onInput={(e: any) => setFormData({...formData, lastName: e.target.value})}
+                    />
+                </div>
 
-                    <LmPrototypeDropdown
-                        name="strategy"
-                        label="Aktiv strategi"
-                        placeholder="Välj en strategi..."
+                <LmPrototypeInput
+                    label="E-postadress*"
+                    placeholder="namn@foretag.se"
+                    value={formData.email}
+                    onInput={(e: any) => setFormData({...formData, email: e.target.value})}
+                />
+
+                <LmPrototypeDropdown label="Biljettyp:" variant="secondary">
+                    <LmPrototypeDropdownItem onClick={() => setFormData({...formData, ticketType: 'Standard'})} icon="arrow-right">
+                        Standard (2995 kr)
+                    </LmPrototypeDropdownItem>
+                    <LmPrototypeDropdownItem onClick={() => setFormData({...formData, ticketType: 'VIP'})} icon="check">
+                        VIP (4995 kr)
+                    </LmPrototypeDropdownItem>
+                    <LmPrototypeDropdownItem onClick={() => setFormData({...formData, ticketType: 'Student'})} icon="arrow-right">
+                        Student (495 kr)
+                    </LmPrototypeDropdownItem>
+                </LmPrototypeDropdown>
+
+                <LmPrototypeDropdown
+                    label="Välj mat:"
+                    variant="secondary"
+                    onLmChange={(e: any) => {
+                        setFormData({...formData, foodPreference: e.detail.value});
+                    }}
+                >
+                    <LmPrototypeDropdownItem value="Ingen">Ingen särskild</LmPrototypeDropdownItem>
+                    <LmPrototypeDropdownItem value="Vegetariskt">Vegetariskt</LmPrototypeDropdownItem>
+                    <LmPrototypeDropdownItem value="Veganskt">Veganskt</LmPrototypeDropdownItem>
+                    <LmPrototypeDropdownItem onClick={() => setFormData({...formData, foodPreference: 'Annat'})}>Annat (anges vid ankomst)</LmPrototypeDropdownItem>
+                </LmPrototypeDropdown>
+
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                    <LmPrototypeCheckbox
+                        checked={formData.newsletter}
+                        onChange={(e: any) => setFormData({...formData, newsletter: e.target.checked})}
                     >
-                        <LmPrototypeDropdownItem value="print" icon="x">
-                            PrintStrategy
-                        </LmPrototypeDropdownItem>
-
-                        <LmPrototypeDropdownItem value="export" icon="loader">
-                            ExportStrategy
-                        </LmPrototypeDropdownItem>
-
-                        <LmPrototypeDropdownItem value="import" icon="x">
-                            ImportStrategy
-                        </LmPrototypeDropdownItem>
-                    </LmPrototypeDropdown>
+                        Jag vill få uppdateringar om framtida events via e-post.
+                    </LmPrototypeCheckbox>
 
                     <LmPrototypeCheckbox
-                        name="advanced"
-                        value="enabled"
-                        label="Aktivera avancerade inställningar"
-                        onChange={(e: any) => setShowAdvanced(e.target.checked)}
-                    />
+                        checked={formData.terms}
+                        onChange={(e: any) => setFormData({...formData, terms: e.target.checked})}
+                    >
+                        Jag godkänner villkoren.*
+                    </LmPrototypeCheckbox>
+                </div>
 
-                    {showAdvanced && (
-                        <div style={{ padding: 16, background: "var(--lm-prototype-color-surface-subtle)", borderRadius: 6, borderLeft: "3px solid var(--lm-prototype-color-action-primary)" }}>
-                            <LmPrototypeInput
-                                name="apiKey"
-                                label="API-nyckel"
-                                placeholder="Skriv in din nyckel..."
-                                icon="check"
-                            />
-                        </div>
-                    )}
+                <footer style={{
+                    marginTop: '24px',
+                    paddingTop: '24px',
+                    borderTop: '1px solid #ccc',
+                    display: 'flex',
+                    justifyContent: 'flex-end',
+                    gap: '12px'
+                }}>
+                    <LmPrototypeButton variant="tertiary" onClick={() => window.location.reload()}>
+                        Rensa
+                    </LmPrototypeButton>
 
-                    <div style={{ display: "flex", gap: 12, marginTop: 8, paddingTop: 16, borderTop: "1px solid var(--lm-prototype-color-border-default)" }}>
-                        <LmPrototypeButton type="submit" icon="check">Spara konfiguration</LmPrototypeButton>
-                        <LmPrototypeButton type="reset" variant="tertiary">Återställ</LmPrototypeButton>
-                    </div>
-                </form>
-            </Section>
+                    <LmPrototypeButton
+                        variant="primary"
+                        disabled={!isFormValid}
+                        loading={isLoading}
+                        onClick={handleRegister}
+                        icon="check"
+                    >
+                        Slutför anmälan
+                    </LmPrototypeButton>
+                </footer>
+
+            </div>
         </div>
     );
 }
