@@ -234,7 +234,7 @@ export default function App() {
         <div style={{ padding: 40, minHeight: "100vh", background: "var(--lm-prototype-color-surface-default)", color: "var(--lm-prototype-color-text-primary)", fontFamily: "var(--lm-prototype-font-family-sans, system-ui)" }}>
             <header style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 40, borderBottom: "1px solid var(--lm-prototype-color-border-default)", paddingBottom: 20, maxWidth: 800 }}>
                 <h1 style={{ fontSize: 24, fontWeight: 700, margin: 0 }}>Design System — React Test App</h1>
-                <LmPrototypeButton variant="tertiary" icon="moon" onClick={toggleTheme}>
+                <LmPrototypeButton variant="tertiary" icon="chevron-down" onClick={toggleTheme}>
                     {darkMode ? "Light Mode" : "Dark Mode"}
                 </LmPrototypeButton>
             </header>
@@ -256,15 +256,15 @@ export default function App() {
                         label="Aktiv strategi"
                         placeholder="Välj en strategi..."
                     >
-                        <LmPrototypeDropdownItem value="print" icon="printer">
+                        <LmPrototypeDropdownItem value="print" icon="x">
                             PrintStrategy
                         </LmPrototypeDropdownItem>
 
-                        <LmPrototypeDropdownItem value="export" icon="upload">
+                        <LmPrototypeDropdownItem value="export" icon="loader">
                             ExportStrategy
                         </LmPrototypeDropdownItem>
 
-                        <LmPrototypeDropdownItem value="import" icon="download">
+                        <LmPrototypeDropdownItem value="import" icon="x">
                             ImportStrategy
                         </LmPrototypeDropdownItem>
                     </LmPrototypeDropdown>
@@ -282,7 +282,7 @@ export default function App() {
                                 name="apiKey"
                                 label="API-nyckel"
                                 placeholder="Skriv in din nyckel..."
-                                icon="lock"
+                                icon="check"
                             />
                         </div>
                     )}

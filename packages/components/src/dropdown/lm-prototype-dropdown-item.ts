@@ -1,5 +1,8 @@
 import { LitElement, html, css, nothing } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
+import '@lm-prototype/icons/lm-prototype-icon';
+
+import type { IconName } from '@lm-prototype/icons';
 
 @customElement('lm-prototype-dropdown-item')
 export class LmPrototypeDropdownItem extends LitElement {
@@ -23,8 +26,8 @@ export class LmPrototypeDropdownItem extends LitElement {
     `;
 
     @property() value = '';
-    @property() icon?: string;
-    @property({ attribute: 'icon-end' }) iconEnd?: string;
+    @property() icon?: IconName;
+    @property({ attribute: 'icon-end' }) iconEnd?: IconName;
 
     private _handleSelect() {
         this.dispatchEvent(new CustomEvent('lm-dropdown-item-select', {

@@ -212,7 +212,7 @@ import '@lm-prototype/icons/lm-prototype-icon';
     <div class="app">
       <header class="app-header">
         <h1>Design System — Angular Test App</h1>
-        <lm-prototype-button variant="tertiary" icon="moon" (click)="toggleTheme()">
+        <lm-prototype-button variant="tertiary" icon="check" (click)="toggleTheme()">
           {{ darkMode ? 'Light Mode' : 'Dark Mode' }}
         </lm-prototype-button>
       </header>
@@ -235,15 +235,15 @@ import '@lm-prototype/icons/lm-prototype-icon';
               label="Aktiv strategi"
               placeholder="Välj en strategi...">
 
-              <lm-prototype-dropdown-item value="print" icon="printer">
+              <lm-prototype-dropdown-item value="print" icon="check">
                 PrintStrategy
               </lm-prototype-dropdown-item>
 
-              <lm-prototype-dropdown-item value="export" icon="upload">
+              <lm-prototype-dropdown-item value="export" icon="loader">
                 ExportStrategy
               </lm-prototype-dropdown-item>
 
-              <lm-prototype-dropdown-item value="import" icon="download">
+              <lm-prototype-dropdown-item value="import" icon="check">
                 ImportStrategy
               </lm-prototype-dropdown-item>
             </lm-prototype-dropdown>
@@ -260,7 +260,7 @@ import '@lm-prototype/icons/lm-prototype-icon';
                 name="apiKey"
                 label="API-nyckel"
                 placeholder="Skriv in din nyckel..."
-                icon="lock">
+                icon="arrow-right">
               </lm-prototype-input>
             </div>
 

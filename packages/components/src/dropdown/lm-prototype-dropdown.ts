@@ -2,6 +2,8 @@ import { LitElement, html, css, nothing } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import '@lm-prototype/icons/lm-prototype-icon';
 
+import type { IconName } from '@lm-prototype/icons';
+
 export type DropdownVariant = 'primary' | 'secondary' | 'tertiary';
 export type DropdownSize = 'sm' | 'md' | 'lg';
 
@@ -141,7 +143,7 @@ export class LmPrototypeDropdown extends LitElement {
     @property({ type: Boolean, reflect: true }) required = false;
 
     @property({ reflect: true }) value = '';
-    @property() icon?: string;
+    @property() icon?: IconName;
     @property() label?: string;
     @property() placeholder = 'Välj alternativ...';
     @property() name?: string;

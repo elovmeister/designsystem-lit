@@ -2,6 +2,8 @@ import { LitElement, html, css, nothing } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import '@lm-prototype/icons/lm-prototype-icon';
 
+import type { IconName } from '@lm-prototype/icons';
+
 export type InputType = 'text' | 'email' | 'password' | 'number' | 'search' | 'tel' | 'url';
 export type InputSize = 'sm' | 'md' | 'lg';
 
@@ -140,8 +142,8 @@ export class LmPrototypeInput extends LitElement {
     @property() type: InputType = 'text';
     @property() placeholder = '';
     @property({ reflect: true }) size: InputSize = 'md';
-    @property() icon?: string;
-    @property({ attribute: 'icon-end'}) iconEnd?: string;
+    @property() icon?: IconName;
+    @property({ attribute: 'icon-end'}) iconEnd?: IconName;
     @property({ type: Boolean, reflect: true }) disabled = false;
     @property({ type: Boolean, reflect: true }) required = false;
     @property({ type: Boolean, reflect: true }) readonly = false;

@@ -2,6 +2,8 @@ import {LitElement, html, css, nothing} from 'lit';
 import {customElement, property} from 'lit/decorators.js';
 import '@lm-prototype/icons/lm-prototype-icon';
 
+import type { IconName } from '@lm-prototype/icons';
+
 export type ButtonVariant = 'primary' | 'secondary' | 'tertiary' | 'danger';
 export type ButtonSize = 'sm' | 'md' | 'lg';
 export type ButtonType = 'button' | 'submit' | 'reset';
@@ -213,9 +215,9 @@ export class LmPrototypeButton extends LitElement {
 
     @property() value?: string;
 
-    @property() icon?: string;
+    @property() icon?: IconName;
 
-    @property({ attribute: 'icon-end'}) iconEnd?: string;
+    @property({ attribute: 'icon-end'}) iconEnd?: IconName;
 
     @property({type: Boolean, reflect: true}) disabled = false;
 
