@@ -196,7 +196,6 @@ export class AppComponent {
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-// Importera hela ert bibliotek
 import '@lm-prototype/components/lm-prototype-button';
 import '@lm-prototype/components/lm-prototype-input';
 import '@lm-prototype/components/lm-prototype-dropdown';
@@ -317,7 +316,6 @@ export class AppComponent {
     document.documentElement.dataset['theme'] = this.darkMode ? 'dark' : '';
   }
 
-  // Fångar event från er Web Component
   onAdvancedToggle(event: Event): void {
     const target = event.target as HTMLInputElement;
     this.showAdvanced = target.checked;
@@ -328,7 +326,6 @@ export class AppComponent {
     const form = event.target as HTMLFormElement;
     const data = new FormData(form);
 
-    // Visar att ElementInternals fungerar perfekt!
     alert('Sparad data från Web Components: \n\n' + JSON.stringify(Object.fromEntries(data as any), null, 2));
   }
 }

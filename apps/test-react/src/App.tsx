@@ -194,7 +194,6 @@ export default function App() {
     );
 }*/
 import { useState } from "react";
-// Importera från ert React-wrapper-paket
 import {
     LmPrototypeButton,
     LmPrototypeDropdown,
@@ -245,7 +244,6 @@ export default function App() {
                     onSubmit={handleSubmit}
                     style={{ display: "flex", flexDirection: "column", gap: 20, padding: 24, border: "1px solid var(--lm-prototype-color-border-default)", borderRadius: 8, background: "var(--lm-prototype-color-surface-raised)" }}
                 >
-                    {/* 1. Textfältet */}
                     <LmPrototypeInput
                         name="configName"
                         label="Konfigurationsnamn"
@@ -253,7 +251,6 @@ export default function App() {
                         required
                     />
 
-                    {/* 2. Dropdown med Items och Ikon-props (Fantastisk DX!) */}
                     <LmPrototypeDropdown
                         name="strategy"
                         label="Aktiv strategi"
@@ -272,7 +269,6 @@ export default function App() {
                         </LmPrototypeDropdownItem>
                     </LmPrototypeDropdown>
 
-                    {/* 3. Checkbox som driver React State */}
                     <LmPrototypeCheckbox
                         name="advanced"
                         value="enabled"
@@ -280,7 +276,6 @@ export default function App() {
                         onChange={(e: any) => setShowAdvanced(e.target.checked)}
                     />
 
-                    {/* 4. Villkorsstyrd rendering (React) */}
                     {showAdvanced && (
                         <div style={{ padding: 16, background: "var(--lm-prototype-color-surface-subtle)", borderRadius: 6, borderLeft: "3px solid var(--lm-prototype-color-action-primary)" }}>
                             <LmPrototypeInput
