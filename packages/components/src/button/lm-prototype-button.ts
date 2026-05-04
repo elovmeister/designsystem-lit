@@ -213,6 +213,10 @@ export class LmPrototypeButton extends LitElement {
 
     @property() value?: string;
 
+    @property() icon?: string;
+
+    @property({ attribute: 'icon-end'}) iconEnd?: string;
+
     @property({type: Boolean, reflect: true}) disabled = false;
 
     @property({type: Boolean, reflect: true}) loading = false;
@@ -288,13 +292,15 @@ export class LmPrototypeButton extends LitElement {
 </span>
                         `
                         : html`
-                            <slot name="start" class="btn__icon"></slot>`}
+                            <slot name="start" class="btn__icon">
+                                ${this.icon ? html`<lm-prototype-icon name=${this.icon}></lm-prototype-icon>` : nothing}
+                            </slot>`}
 
-                <span class="btn__label">
-<slot></slot>
-</span>
+                <span class="btn__label"><slot></slot></span>
 
-                <slot name="end" class="btn__icon"></slot>
+                <slot name="end" class="btn__icon">
+                    ${this.iconEnd ? html`<lm-prototype-icon name=${this.iconEnd}></lm-prototype-icon>` : nothing}
+                </slot>
             </button>
         `;
     }

@@ -1,4 +1,4 @@
-import { useState } from "react";
+/**import { useState } from "react";
 import { LmPrototypeButton, LmPrototypeDropdown } from "@lm-prototype/components-react";
 
 import "@lm-prototype/tokens/themes/light.css";
@@ -189,6 +189,114 @@ export default function App() {
                         </div>
                     </LmPrototypeDropdown>
                 </div>
+            </Section>
+        </div>
+    );
+}*/
+import { useState } from "react";
+// Importera från ert React-wrapper-paket
+import {
+    LmPrototypeButton,
+    LmPrototypeDropdown,
+    LmPrototypeDropdownItem,
+    LmPrototypeInput,
+    LmPrototypeCheckbox
+} from "@lm-prototype/components-react";
+
+import "@lm-prototype/tokens/themes/light.css";
+import "@lm-prototype/tokens/themes/dark.css";
+
+const Section = ({ title, children }: { title: string; children: React.ReactNode }) => (
+    <section style={{ marginBottom: 32, maxWidth: 500 }}>
+        <h2 style={{ fontSize: 14, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 12, color: "var(--lm-prototype-color-text-secondary)" }}>
+            {title}
+        </h2>
+        <div>{children}</div>
+    </section>
+);
+
+export default function App() {
+    const [darkMode, setDarkMode] = useState(false);
+    const [showAdvanced, setShowAdvanced] = useState(false);
+
+    const toggleTheme = () => {
+        const next = !darkMode;
+        setDarkMode(next);
+        document.documentElement.dataset["theme"] = next ? "dark" : "";
+    };
+
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        const data = new FormData(e.currentTarget);
+        alert('Sparad data från Web Components: \n\n' + JSON.stringify(Object.fromEntries(data as any), null, 2));
+    };
+
+    return (
+        <div style={{ padding: 40, minHeight: "100vh", background: "var(--lm-prototype-color-surface-default)", color: "var(--lm-prototype-color-text-primary)", fontFamily: "var(--lm-prototype-font-family-sans, system-ui)" }}>
+            <header style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 40, borderBottom: "1px solid var(--lm-prototype-color-border-default)", paddingBottom: 20, maxWidth: 800 }}>
+                <h1 style={{ fontSize: 24, fontWeight: 700, margin: 0 }}>Design System — React Test App</h1>
+                <LmPrototypeButton variant="tertiary" icon="moon" onClick={toggleTheme}>
+                    {darkMode ? "Light Mode" : "Dark Mode"}
+                </LmPrototypeButton>
+            </header>
+
+            <Section title="Testscenario: Konfigurera Strategi">
+                <form
+                    onSubmit={handleSubmit}
+                    style={{ display: "flex", flexDirection: "column", gap: 20, padding: 24, border: "1px solid var(--lm-prototype-color-border-default)", borderRadius: 8, background: "var(--lm-prototype-color-surface-raised)" }}
+                >
+                    {/* 1. Textfältet */}
+                    <LmPrototypeInput
+                        name="configName"
+                        label="Konfigurationsnamn"
+                        placeholder="T.ex. Nattkörning"
+                        required
+                    />
+
+                    {/* 2. Dropdown med Items och Ikon-props (Fantastisk DX!) */}
+                    <LmPrototypeDropdown
+                        name="strategy"
+                        label="Aktiv strategi"
+                        placeholder="Välj en strategi..."
+                    >
+                        <LmPrototypeDropdownItem value="print" icon="printer">
+                            PrintStrategy
+                        </LmPrototypeDropdownItem>
+
+                        <LmPrototypeDropdownItem value="export" icon="upload">
+                            ExportStrategy
+                        </LmPrototypeDropdownItem>
+
+                        <LmPrototypeDropdownItem value="import" icon="download">
+                            ImportStrategy
+                        </LmPrototypeDropdownItem>
+                    </LmPrototypeDropdown>
+
+                    {/* 3. Checkbox som driver React State */}
+                    <LmPrototypeCheckbox
+                        name="advanced"
+                        value="enabled"
+                        label="Aktivera avancerade inställningar"
+                        onChange={(e: any) => setShowAdvanced(e.target.checked)}
+                    />
+
+                    {/* 4. Villkorsstyrd rendering (React) */}
+                    {showAdvanced && (
+                        <div style={{ padding: 16, background: "var(--lm-prototype-color-surface-subtle)", borderRadius: 6, borderLeft: "3px solid var(--lm-prototype-color-action-primary)" }}>
+                            <LmPrototypeInput
+                                name="apiKey"
+                                label="API-nyckel"
+                                placeholder="Skriv in din nyckel..."
+                                icon="lock"
+                            />
+                        </div>
+                    )}
+
+                    <div style={{ display: "flex", gap: 12, marginTop: 8, paddingTop: 16, borderTop: "1px solid var(--lm-prototype-color-border-default)" }}>
+                        <LmPrototypeButton type="submit" icon="check">Spara konfiguration</LmPrototypeButton>
+                        <LmPrototypeButton type="reset" variant="tertiary">Återställ</LmPrototypeButton>
+                    </div>
+                </form>
             </Section>
         </div>
     );

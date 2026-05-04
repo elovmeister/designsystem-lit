@@ -1,6 +1,5 @@
 import { LitElement, html, css, nothing } from 'lit';
-import { customElement, property, state, query } from 'lit/decorators.js';
-import { ifDefined } from 'lit/directives/if-defined.js';
+import { customElement, property, state } from 'lit/decorators.js';
 import '@lm-prototype/icons/lm-prototype-icon';
 
 export type DropdownVariant = 'primary' | 'secondary' | 'tertiary';
@@ -142,7 +141,7 @@ export class LmPrototypeDropdown extends LitElement {
     @property({ type: Boolean, reflect: true }) required = false;
 
     @property({ reflect: true }) value = '';
-
+    @property() icon?: string;
     @property() label?: string;
     @property() placeholder = 'Välj alternativ...';
     @property() name?: string;
@@ -220,8 +219,11 @@ export class LmPrototypeDropdown extends LitElement {
                         aria-invalid=${fwdAriaInvalid ?? nothing}
                         @click=${this._toggleDropdown}
                 >
+                    <slot name="start" class="trigger__icon">
+                        ${this.icon ? html`<lm-prototype-icon name=${this.icon} style="margin-right: 8px;"></lm-prototype-icon>` : nothing}
+                    </slot>
                     <span class="trigger__text">${displayLabel}</span>
-                    <span class="trigger__icon">
+                    <span class="trigger__icon trigger__icon--chevron">
                         <lm-prototype-icon name="chevron-down"></lm-prototype-icon>
                     </span>
                 </button>

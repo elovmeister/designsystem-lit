@@ -14,6 +14,18 @@
     "./lm-prototype-dropdown": {
       "import": "./dist/lm-prototype-dropdown.js",
       "types": "./dist/lm-prototype-dropdown.d.ts"
+    },
+    "./lm-prototype-dropdown-item": {
+      "import": "./dist/lm-prototype-dropdown-item.js",
+      "types": "./dist/lm-prototype-dropdown-item.d.ts"
+    },
+    "./lm-prototype-checkbox": {
+      "import": "./dist/lm-prototype-checkbox.js",
+      "types": "./dist/lm-prototype-checkbox.d.ts"
+    },
+    "./lm-prototype-input": {
+      "import": "./dist/lm-prototype-input.js",
+      "types": "./dist/lm-prototype-input.d.ts"
     }
   },
   "main": "./dist/index.js",

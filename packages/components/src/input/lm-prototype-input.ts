@@ -1,5 +1,5 @@
 import { LitElement, html, css, nothing } from 'lit';
-import { customElement, property, query } from 'lit/decorators.js';
+import { customElement, property } from 'lit/decorators.js';
 import '@lm-prototype/icons/lm-prototype-icon';
 
 export type InputType = 'text' | 'email' | 'password' | 'number' | 'search' | 'tel' | 'url';
@@ -140,13 +140,14 @@ export class LmPrototypeInput extends LitElement {
     @property() type: InputType = 'text';
     @property() placeholder = '';
     @property({ reflect: true }) size: InputSize = 'md';
+    @property() icon?: string;
+    @property({ attribute: 'icon-end'}) iconEnd?: string;
     @property({ type: Boolean, reflect: true }) disabled = false;
     @property({ type: Boolean, reflect: true }) required = false;
     @property({ type: Boolean, reflect: true }) readonly = false;
 
     @property({ type: Boolean, state: true }) private _focused = false;
 
-    @query('.input') private readonly _inputEl!: HTMLInputElement;
     private readonly _internals: ElementInternals;
     private readonly _inputId = `lm-input-${Math.random().toString(36).substring(2, 9)}`;
 
@@ -218,7 +219,9 @@ export class LmPrototypeInput extends LitElement {
             : nothing}
                 
                 <div class="input-wrapper ${this._focused ? 'input-wrapper--focused' : ''} ${this.disabled ? 'input-wrapper--disabled' : ''}" part="wrapper">
-                    <slot name="start" class="input__slot"></slot>
+                    <slot name="start" class="input__slot">
+                        ${this.icon ? html`<lm-prototype-icon name=${this.icon} style="margin-left: var(--_px);"></lm-prototype-icon>` : nothing}
+                    </slot>
                     
                     <input
                         id="${this._inputId}"
@@ -241,7 +244,9 @@ export class LmPrototypeInput extends LitElement {
                         @blur=${this._handleBlur}
                     />
 
-                    <slot name="end" class="input__slot"></slot>
+                    <slot name="end" class="input__slot">
+                        ${this.iconEnd ? html`<lm-prototype-icon name=${this.iconEnd} style="margin-right: var(--_px);"></lm-prototype-icon>` : nothing}
+                    </slot>
                 </div>
             </div>
         `;

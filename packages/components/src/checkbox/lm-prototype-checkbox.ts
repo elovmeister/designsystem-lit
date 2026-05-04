@@ -1,5 +1,5 @@
 import { LitElement, html, css, nothing } from 'lit';
-import { customElement, property, query } from 'lit/decorators.js';
+import { customElement, property } from 'lit/decorators.js';
 import '@lm-prototype/icons/lm-prototype-icon';
 
 @customElement('lm-prototype-checkbox')
@@ -108,7 +108,6 @@ export class LmPrototypeCheckbox extends LitElement {
     @property() value = 'on';
     @property() name?: string;
 
-    @query('.checkbox__input') private readonly _inputEl!: HTMLInputElement;
     private readonly _internals: ElementInternals;
     private readonly _inputId = `lm-checkbox-${Math.random().toString(36).substring(2, 9)}`;
 
