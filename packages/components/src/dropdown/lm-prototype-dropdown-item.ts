@@ -23,6 +23,15 @@ export class LmPrototypeDropdownItem extends LitElement {
         .item:hover {
             background: var(--lm-prototype-color-surface-subtle, #f3f4f6);
         }
+        .item__icon {
+            display: flex;
+            align-items: center;
+            flex-shrink: 0; 
+        }
+
+        .item__text {
+            flex-grow: 1; 
+        }
     `;
 
     @property() value = '';
@@ -38,15 +47,22 @@ export class LmPrototypeDropdownItem extends LitElement {
 
     render() {
         return html`
-            <slot name="start" class="item__icon">
-                ${this.icon ? html`<lm-prototype-icon name=${this.icon}></lm-prototype-icon>` : nothing}
-            </slot>
             <div class="item" role="option" @click=${this._handleSelect}>
-                <slot></slot>
+                <span class="item__icon">
+                    <slot name="start">
+                        ${this.icon ? html`<lm-prototype-icon name=${this.icon}></lm-prototype-icon>` : nothing}
+                    </slot>
+                </span>
+                <span class="item__text">
+                    <slot></slot>
+                </span>
+
+                <span class="item__icon">
+                    <slot name="end">
+                        ${this.iconEnd ? html`<lm-prototype-icon name=${this.iconEnd}></lm-prototype-icon>` : nothing}
+                    </slot>
+                </span>
             </div>
-            <slot name="end" class="item__icon">
-                ${this.iconEnd ? html`<lm-prototype-icon name=${this.iconEnd}></lm-prototype-icon>` : nothing}
-            </slot>
         `;
     }
 }
