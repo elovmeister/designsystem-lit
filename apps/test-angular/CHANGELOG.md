@@ -1,5 +1,14 @@
 # @lm-prototype/test-angular
 
+## 0.0.6
+
+### Patch Changes
+
+- Updated dependencies [2e68bbf]
+  - @lm-prototype/components@1.3.0
+  - @lm-prototype/icons@0.4.0
+  - @lm-prototype/tokens@0.4.0
+
 ## 0.0.5
 
 ### Patch Changes

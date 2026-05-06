@@ -1,5 +1,11 @@
 # @lm-prototype/icons
 
+## 0.4.0
+
+### Minor Changes
+
+- 2e68bbf: final prob
+
 ## 0.3.0
 
 ### Minor Changes

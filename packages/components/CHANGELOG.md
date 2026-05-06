@@ -1,5 +1,16 @@
 # @lm-prototype/components
 
+## 1.3.0
+
+### Minor Changes
+
+- 2e68bbf: final prob
+
+### Patch Changes
+
+- Updated dependencies [2e68bbf]
+  - @lm-prototype/icons@0.4.0
+
 ## 1.2.0
 
 ### Minor Changes
