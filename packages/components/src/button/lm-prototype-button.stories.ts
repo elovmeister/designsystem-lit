@@ -182,21 +182,17 @@ export const WithIcons: Story = {
     parameters: { controls: { disable: true } },
     render: () => html`
     <div style=${row}>
-      <lm-prototype-button variant="primary">
-        <lm-prototype-icon slot="start" name="arrow-right"></lm-prototype-icon>
+      <lm-prototype-button variant="primary" icon="arrow-right">
         Continue
       </lm-prototype-button>
-      <lm-prototype-button variant="secondary">
+      <lm-prototype-button variant="secondary" icon="check">
         Save
-        <lm-prototype-icon slot="end" name="check"></lm-prototype-icon>
       </lm-prototype-button>
-      <lm-prototype-button variant="danger">
-        <lm-prototype-icon slot="start" name="x"></lm-prototype-icon>
+      <lm-prototype-button variant="danger" icon="x">
         Remove
       </lm-prototype-button>
-      <lm-prototype-button variant="tertiary">
+      <lm-prototype-button variant="tertiary" icon-end="chevron-down">
         More
-        <lm-prototype-icon slot="end" name="chevron-down"></lm-prototype-icon>
       </lm-prototype-button>
     </div>
   `,
